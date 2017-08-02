@@ -28,23 +28,8 @@
             <string>
 Map = ds_grid_create(1, 1);
 load_map_from_file(Map, 'TestLab01.grlmap');
-
-var w = ds_grid_width(Map);
-var h = ds_grid_height(Map);
-var cell_size = min(
-    room_width / w,
-    room_height / h);
-var scale = cell_size / 64;
-MapSurf = surface_create(cell_size * w, cell_size * h);
-surface_set_target(MapSurf);
-for (var i = 0; i &lt; w; i++) {
-    for (var j = 0; j &lt; h; j++) {
-        if (Map[#i,j] == 1) {
-            draw_sprite_ext(sWall, 0, i * cell_size, j * cell_size, scale, scale, 0, c_white, 1);
-        }
-    }
-}
-surface_reset_target( );
+MapSurf = surface_create(1, 1);
+draw_map(MapSurf, Map, room_width, room_height);
 
 </string>
           </argument>
