@@ -37,6 +37,8 @@
     <script>scripts\get_shuffle.gml</script>
     <script>scripts\rand.gml</script>
     <script>scripts\oPlayerInit.gml</script>
+    <script>scripts\Dx.gml</script>
+    <script>scripts\Dy.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\oMap</object>
