@@ -3,11 +3,40 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="1" name="datafiles">
+    <datafile>
+      <name>TestLab01.grlmap</name>
+      <exists>-1</exists>
+      <size>542</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>TestLab01.grlmap</filename>
+    </datafile>
+  </datafiles>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\sWall</sprite>
+    <sprite>sprites\sPlayer</sprite>
+    <sprite>sprites\sTestLab</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\load_map_from_file.gml</script>
+  </scripts>
+  <objects name="objects">
+    <object>objects\oMap</object>
+  </objects>
   <rooms name="rooms">
     <room>rooms\rm_init</room>
   </rooms>
