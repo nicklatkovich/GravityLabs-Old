@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>
+MomsNumber = 0;
 Map = ds_grid_create(1, 1);
 load_map_from_file(Map, 'TestLab01.grlmap');
 var w = ds_grid_width(Map);
@@ -37,15 +38,6 @@ CellSize = min(
 draw_map(MapSurf, Map, CellSize);
 
 oPlayerInit(id, StartX, StartY);
-/*
-for (var i = 0; i &lt; w; i++) {
-    for (var j = 0; j &lt; h; j++) {
-        if (Map[#i,j] == 0) {
-            instance_create(i * CellSize + random(CellSize), j * CellSize + random(CellSize), oPixel);
-        }
-    }
-}
-*/
 
 </string>
           </argument>

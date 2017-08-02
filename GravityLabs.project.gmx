@@ -43,7 +43,6 @@
   <objects name="objects">
     <object>objects\oMap</object>
     <object>objects\oPlayer</object>
-    <object>objects\oPixel</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_init</room>

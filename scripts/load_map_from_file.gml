@@ -22,6 +22,8 @@ for (var yy = 0; yy < height; yy++) {
                 StartX = xx;
                 StartY = yy;
                 break;
+            case 'k':
+                break;
         }
         ds_grid[#xx,yy] = cell_value;
     }
