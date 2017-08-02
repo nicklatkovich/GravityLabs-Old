@@ -28,6 +28,7 @@
     <sprite>sprites\sWall</sprite>
     <sprite>sprites\sPlayer</sprite>
     <sprite>sprites\sTestLab</sprite>
+    <sprite>sprites\sExit</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -41,7 +42,9 @@
     <script>scripts\Dy.gml</script>
     <script>scripts\generate_map.gml</script>
     <script>scripts\find_longest_way.gml</script>
+    <script>scripts\draw_back.gml</script>
   </scripts>
+  <shaders name="shaders"/>
   <objects name="objects">
     <object>objects\oMap</object>
     <object>objects\oPlayer</object>

@@ -39,6 +39,8 @@ CellSize = min(
     room_width / w,
     room_height / h);
 draw_map(MapSurf, Map, CellSize);
+SurfBack = surface_create(w * CellSize, h * CellSize);
+draw_back(SurfBack, CellSize);
 
 oPlayerInit(id, StartX, StartY);
 
@@ -46,6 +48,12 @@ var xyf = find_longest_way(Map, StartX + StartY * w);
 var xf = xyf mod w;
 var yf = xyf div w;
 var _exit = instance_create((xf + 0.5) * CellSize, (yf + 0.5) * CellSize, oExit);
+for (var d = rand(4); d &lt; 7; d++) {
+    if (Map[#xf + Dx(d),yf + Dy(d)] == 1) {
+        _exit.Angle = (d + 1) * 90;
+        break;
+    }
+}
 
 </string>
           </argument>
@@ -99,6 +107,7 @@ surface_free(MapSurf);
           <argument>
             <kind>1</kind>
             <string>
+draw_surface(SurfBack, 0, 0);
 draw_surface(MapSurf, 0, 0);
 
 </string>
