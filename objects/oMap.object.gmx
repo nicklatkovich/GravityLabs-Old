@@ -28,13 +28,24 @@
             <string>
 Map = ds_grid_create(1, 1);
 load_map_from_file(Map, 'TestLab01.grlmap');
+var w = ds_grid_width(Map);
+var h = ds_grid_height(Map);
 MapSurf = surface_create(1, 1);
 CellSize = min(
-    room_width / ds_grid_width(Map),
-    room_height / ds_grid_height(Map));
+    room_width / w,
+    room_height / h);
 draw_map(MapSurf, Map, CellSize);
 
 oPlayerInit(id, StartX, StartY);
+/*
+for (var i = 0; i &lt; w; i++) {
+    for (var j = 0; j &lt; h; j++) {
+        if (Map[#i,j] == 0) {
+            instance_create(i * CellSize + random(CellSize), j * CellSize + random(CellSize), oPixel);
+        }
+    }
+}
+*/
 
 </string>
           </argument>
