@@ -34,6 +34,8 @@ CellSize = min(
     room_height / ds_grid_height(Map));
 draw_map(MapSurf, Map, CellSize);
 
+oPlayerInit(id, StartX, StartY);
+
 </string>
           </argument>
         </arguments>

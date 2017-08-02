@@ -18,9 +18,14 @@ for (var yy = 0; yy < height; yy++) {
             case '1':
                 cell_value = 1;
                 break;
+            case 's':
+                StartX = xx;
+                StartY = yy;
+                break;
         }
         ds_grid[#xx,yy] = cell_value;
     }
 }
 file_text_close(file);
+
 
