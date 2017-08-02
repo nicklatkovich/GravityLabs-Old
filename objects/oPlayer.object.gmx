@@ -28,6 +28,8 @@
             <string>
 DirGrav = -1;
 CanChangeGrav = true;
+Angle = 0;
+Speed = 8;
 
 </string>
           </argument>
@@ -67,12 +69,15 @@ if (CanChangeGrav) {
         var xt = xx;
         var yt = yy;
         var xp, yp;
+        var steps = 0;
         do {
             xp = xt;
             yp = yt;
             xt += Dx(newDir);
             yt += Dy(newDir);
+            steps++;
         } until (Map.Map[#xt,yt] != 0);
+        steps--;
         if (xp != xx || yp != yy) {
             DirGrav = newDir;
             XTo = (xp + 0.5) * Map.CellSize;
@@ -80,11 +85,14 @@ if (CanChangeGrav) {
             CanChangeGrav = false;
             xx = xp;
             yy = yp;
+            AngleTo = (DirGrav + 1) * 90;
+            AngleSpeed = angle_difference(AngleTo, Angle) / steps / (Map.CellSize / Speed);
         }
     }
 } else {
-    x += Dx(DirGrav) * 8;
-    y += Dy(DirGrav) * 8;
+    x += Dx(DirGrav) * Speed;
+    y += Dy(DirGrav) * Speed;
+    Angle += AngleSpeed;
     var stop = false;
     switch (DirGrav) {
         case 0:
@@ -112,6 +120,7 @@ if (CanChangeGrav) {
         CanChangeGrav = true;
         x = XTo;
         y = YTo;
+        Angle = AngleTo;
     }
 }
 
@@ -138,7 +147,7 @@ if (CanChangeGrav) {
           <argument>
             <kind>1</kind>
             <string>
-draw_sprite_ext(sPlayer, 0, x, y, Map.CellSize / 64, Map.CellSize / 64, 0, c_white, 1);
+draw_sprite_ext(sPlayer, 0, x, y, Map.CellSize / 64, Map.CellSize / 64, Angle, c_white, 1);
 
 </string>
           </argument>
