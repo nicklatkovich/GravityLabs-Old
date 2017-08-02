@@ -124,6 +124,16 @@ if (CanChangeGrav) {
     }
 }
 
+if (keyboard_check_pressed(ord('R'))) {
+    with (all) {
+        instance_destroy( );
+    }
+    instance_create(0, 0, oMap);
+} else if (keyboard_check_pressed(vk_space)) {
+    instance_destroy( );
+    oPlayerInit(Map, Map.StartX, Map.StartY);
+}
+
 </string>
           </argument>
         </arguments>

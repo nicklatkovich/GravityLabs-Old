@@ -26,9 +26,12 @@
           <argument>
             <kind>1</kind>
             <string>
+randomize( );
+
 MomsNumber = 0;
-Map = ds_grid_create(1, 1);
-load_map_from_file(Map, 'TestLab01.grlmap');
+Map = ds_grid_create(16, 16);
+//load_map_from_file(Map, 'TestLab01.grlmap');
+generate_map(Map);
 var w = ds_grid_width(Map);
 var h = ds_grid_height(Map);
 MapSurf = surface_create(1, 1);
@@ -38,6 +41,11 @@ CellSize = min(
 draw_map(MapSurf, Map, CellSize);
 
 oPlayerInit(id, StartX, StartY);
+
+var xyf = find_longest_way(Map, StartX + StartY * w);
+var xf = xyf mod w;
+var yf = xyf div w;
+var _exit = instance_create((xf + 0.5) * CellSize, (yf + 0.5) * CellSize, oExit);
 
 </string>
           </argument>
@@ -63,6 +71,9 @@ oPlayerInit(id, StartX, StartY);
             <kind>1</kind>
             <string>
 ds_grid_destroy(Map);
+surface_set_target(MapSurf);
+draw_clear_alpha(c_black, 0);
+surface_reset_target( );
 surface_free(MapSurf);
 
 </string>
