@@ -1,15 +1,11 @@
-/// draw_map(surf, ds_grid, width, height)
+/// draw_map(surf, ds_grid, cell_size)
 
 var surf = argument0;
 var ds_grid = argument1;
-var width = argument2;
-var height = argument3;
+var cell_size = argument2;
 
 var w = ds_grid_width(ds_grid);
 var h = ds_grid_height(ds_grid);
-var cell_size = min(
-    width / w,
-    height / h);
 var scale = cell_size / 64;
 surface_resize(surf, cell_size * w, cell_size * h);
 var l = w * h;

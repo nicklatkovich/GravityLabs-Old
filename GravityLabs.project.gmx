@@ -36,9 +36,11 @@
     <script>scripts\draw_map.gml</script>
     <script>scripts\get_shuffle.gml</script>
     <script>scripts\rand.gml</script>
+    <script>scripts\oPlayerInit.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\oMap</object>
+    <object>objects\oPlayer</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_init</room>

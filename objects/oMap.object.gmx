@@ -29,7 +29,10 @@
 Map = ds_grid_create(1, 1);
 load_map_from_file(Map, 'TestLab01.grlmap');
 MapSurf = surface_create(1, 1);
-draw_map(MapSurf, Map, room_width, room_height);
+CellSize = min(
+    room_width / ds_grid_width(Map),
+    room_height / ds_grid_height(Map));
+draw_map(MapSurf, Map, CellSize);
 
 </string>
           </argument>
