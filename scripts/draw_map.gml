@@ -12,12 +12,14 @@ var cell_size = min(
     height / h);
 var scale = cell_size / 64;
 surface_resize(surf, cell_size * w, cell_size * h);
+var l = w * h;
+var shuffle = get_shuffle(l);
 surface_set_target(surf);
-for (var i = 0; i < w; i++) {
-    for (var j = 0; j < h; j++) {
-        if (ds_grid[#i,j] == 1) {
-            draw_sprite_ext(sWall, 0, i * cell_size, j * cell_size, scale, scale, 0, c_white, 1);
-        }
+for (var a = 0; a < l; a++) {
+    var i = shuffle[a] mod w;
+    var j = shuffle[a] div w;
+    if (ds_grid[#i,j] == 1) {
+        draw_sprite_ext(sWall, 0, i * cell_size, j * cell_size, scale, scale, 0, c_white, 1);
     }
 }
 surface_reset_target( );

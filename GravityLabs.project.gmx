@@ -34,6 +34,8 @@
   <scripts name="scripts">
     <script>scripts\load_map_from_file.gml</script>
     <script>scripts\draw_map.gml</script>
+    <script>scripts\get_shuffle.gml</script>
+    <script>scripts\rand.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\oMap</object>
