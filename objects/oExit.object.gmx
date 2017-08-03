@@ -28,6 +28,8 @@
             <string>
 Angle = 0;
 
+OpenProcess = 0;
+
 </string>
           </argument>
         </arguments>
@@ -51,7 +53,11 @@ Angle = 0;
           <argument>
             <kind>1</kind>
             <string>
-draw_sprite_ext(sExit, 1, x, y, oMap.CellSize / 80, oMap.CellSize / 80, Angle, c_white, 1);
+var scale = oMap.CellSize / 80;
+var doorsOffset = OpenProcess * oMap.CellSize / 2;
+draw_sprite_ext(sExit, 1, x, y, scale, scale, Angle, c_white, 1);
+draw_sprite_ext(sExitDoors, 0, x + lengthdir_x(doorsOffset, Angle + 180), y + lengthdir_y(doorsOffset, Angle + 180), scale, scale, Angle, c_white, 1);
+draw_sprite_ext(sExitDoors, 1, x + lengthdir_x(doorsOffset, Angle), y + lengthdir_y(doorsOffset, Angle), scale, scale, Angle, c_white, 1);
 
 </string>
           </argument>

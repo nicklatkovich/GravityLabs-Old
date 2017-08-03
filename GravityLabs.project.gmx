@@ -29,6 +29,7 @@
     <sprite>sprites\sPlayer</sprite>
     <sprite>sprites\sTestLab</sprite>
     <sprite>sprites\sExit</sprite>
+    <sprite>sprites\sExitDoors</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
