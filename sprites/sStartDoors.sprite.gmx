@@ -20,8 +20,8 @@
   <width>96</width>
   <height>96</height>
   <frames>
-    <frame index="0">images\sExitDoors_0.png</frame>
-    <frame index="1">images\sExitDoors_1.png</frame>
-    <frame index="2">images\sExitDoors_2.png</frame>
+    <frame index="0">images\sStartDoors_0.png</frame>
+    <frame index="1">images\sStartDoors_1.png</frame>
+    <frame index="2">images\sStartDoors_2.png</frame>
   </frames>
 </sprite>

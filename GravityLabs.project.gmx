@@ -28,8 +28,8 @@
     <sprite>sprites\sWall</sprite>
     <sprite>sprites\sPlayer</sprite>
     <sprite>sprites\sTestLab</sprite>
-    <sprite>sprites\sExit</sprite>
     <sprite>sprites\sExitDoors</sprite>
+    <sprite>sprites\sStartDoors</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -49,8 +49,9 @@
   <objects name="objects">
     <object>objects\oMap</object>
     <object>objects\oPlayer</object>
-    <object>objects\oExit</object>
+    <object>objects\oDoor</object>
     <object>objects\oMapPresenter</object>
+    <object>objects\oInit</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_init</room>

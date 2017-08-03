@@ -30,7 +30,7 @@ randomize( );
 MapSeed = rand(1024);
 
 MomsNumber = 0;
-Map = ds_grid_create(16, 8);
+Map = ds_grid_create(global.MapWidth, global.MapHeight);
 //load_map_from_file(Map, 'TestLab01.grlmap');
 generate_map(Map, MapSeed);
 var w = ds_grid_width(Map);
@@ -48,13 +48,17 @@ oPlayerInit(id, StartX, StartY);
 var xyf = find_longest_way(Map, StartX + StartY * w);
 FinishX = xyf mod w;
 FinishY = xyf div w;
-var _exit = instance_create((FinishX + 0.5) * CellSize, (FinishY + 0.5) * CellSize, oExit);
+Exit = instance_create((FinishX + 0.5) * CellSize, (FinishY + 0.5) * CellSize, oDoor);
 for (var d = rand(4); d &lt; 7; d++) {
     if (Map[#FinishX + Dx(d),FinishY + Dy(d)] == 1) {
-        _exit.Angle = (d + 1) * 90;
+        Exit.Angle = (d + 1) * 90;
         break;
     }
 }
+Exit.SpriteDoors = sExitDoors;
+
+StartDoors = instance_create((StartX + 0.5) * CellSize, (StartY + 0.5) * CellSize, oDoor);
+StartDoors.SpriteDoors = sStartDoors;
 
 instance_create(0, 0, oMapPresenter);
 

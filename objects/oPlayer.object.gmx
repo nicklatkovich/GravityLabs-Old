@@ -29,10 +29,11 @@
 DirGrav = -1;
 CanChangeGrav = true;
 Angle = 0;
-Speed = 8;
+Speed = 1/8;
 
 LevelIsDone = false;
-Alpha = 1;
+LevelIsStart = false;
+Alpha = 0;
 
 </string>
           </argument>
@@ -58,17 +59,25 @@ Alpha = 1;
             <kind>1</kind>
             <string>
 if (LevelIsDone) {
-    if (oExit.OpenProcess &lt; 1) {
-        oExit.OpenProcess += 0.02;
-    } else if (Alpha &gt; 0) {
-        Alpha -= 0.02;
-    } else {
-        with (all) {
-            instance_destroy( );
+    if (Alpha &gt; 0) {
+        if (oMap.Exit.OpenProcess &lt; 1) {
+            oMap.Exit.OpenProcess += 0.02;
+        } else {
+            Alpha -= 0.02;
         }
-        instance_create(0, 0, oMap);
+    } else {
+        if (oMap.Exit.OpenProcess &gt; 0) {
+            oMap.Exit.OpenProcess -= 0.02;
+        } else {
+            with (all) {
+                instance_destroy( );
+            }
+            global.MapWidth += 2;
+            global.MapHeight++;
+            instance_create(0, 0, oMap);
+        }
     }
-} else {
+} else if (LevelIsStart) {
     if (CanChangeGrav) {
         var newDir = -1;
         if (keyboard_check_pressed(vk_left)) {
@@ -101,12 +110,12 @@ if (LevelIsDone) {
                 xx = xp;
                 yy = yp;
                 AngleTo = (DirGrav + 1) * 90;
-                AngleSpeed = angle_difference(AngleTo, Angle) / steps / (Map.CellSize / Speed);
+                AngleSpeed = angle_difference(AngleTo, Angle) / steps * Speed;
             }
         }
     } else {
-        x += Dx(DirGrav) * Speed;
-        y += Dy(DirGrav) * Speed;
+        x += Dx(DirGrav) * Speed * Map.CellSize;
+        y += Dy(DirGrav) * Speed * Map.CellSize;
         Angle += AngleSpeed;
         var stop = false;
         switch (DirGrav) {
@@ -145,6 +154,20 @@ if (LevelIsDone) {
     if (keyboard_check_pressed(vk_space)) {
         instance_destroy( );
         oPlayerInit(Map, Map.StartX, Map.StartY);
+    }
+} else {
+    if (Alpha &lt; 1) {
+        if (Map.StartDoors.OpenProcess &lt; 1) {
+            Map.StartDoors.OpenProcess += 0.02;
+        } else {
+            Alpha += 0.02;
+        }
+    } else {
+        if (Map.StartDoors.OpenProcess &gt; 0) {
+            Map.StartDoors.OpenProcess -= 0.02;
+        } else {
+            LevelIsStart = true;
+        }
     }
 }
 
