@@ -3,7 +3,7 @@
   <spriteName>sPlayer</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-2</depth>
+  <depth>-200</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -121,15 +121,16 @@ if (CanChangeGrav) {
         x = XTo;
         y = YTo;
         Angle = AngleTo;
-    }
-}
-
-if (keyboard_check_pressed(ord('R'))) {
+        if (xx == oMap.FinishX &amp;&amp; yy == oMap.FinishY) {
     with (all) {
         instance_destroy( );
     }
     instance_create(0, 0, oMap);
-} else if (keyboard_check_pressed(vk_space)) {
+        }
+    }
+}
+
+if (keyboard_check_pressed(vk_space)) {
     instance_destroy( );
     oPlayerInit(Map, Map.StartX, Map.StartY);
 }

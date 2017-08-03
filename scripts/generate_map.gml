@@ -1,6 +1,8 @@
-/// generate_map(ds_grid)
+/// generate_map(ds_grid, seed)
 
 var map = argument0;
+
+random_set_seed(argument1);
 
 var w = ds_grid_width(map);
 var h = ds_grid_height(map);

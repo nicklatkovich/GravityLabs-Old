@@ -43,12 +43,13 @@
     <script>scripts\generate_map.gml</script>
     <script>scripts\find_longest_way.gml</script>
     <script>scripts\draw_back.gml</script>
+    <script>scripts\delete_surface.gml</script>
   </scripts>
-  <shaders name="shaders"/>
   <objects name="objects">
     <object>objects\oMap</object>
     <object>objects\oPlayer</object>
     <object>objects\oExit</object>
+    <object>objects\oMapPresenter</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_init</room>
