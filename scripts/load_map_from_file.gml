@@ -3,31 +3,107 @@
 var ds_grid = argument0;
 var filename = argument1;
 
+var str;
+var args;
 var file = file_text_open_read(filename);
+
+// map width
 var width = file_text_read_real(file);
 file_text_readln(file);
+
+// map height
 var height = file_text_read_real(file);
 file_text_readln(file);
 ds_grid_resize(ds_grid, width, height);
+
+// walls
 for (var yy = 0; yy < height; yy++) {
-    var str = file_text_read_string(file);
+    str = file_text_read_string(file);
     file_text_readln(file);
     for (var xx = 0; xx < width; xx++) {
-        var cell_value = 0;
-        switch (string_char_at(str, xx + 1)) {
-            case '1':
-                cell_value = 1;
-                break;
-            case 's':
-                StartX = xx;
-                StartY = yy;
-                break;
-            case 'k':
-                break;
-        }
-        ds_grid[#xx,yy] = cell_value;
+        ds_grid[#xx,yy] = real(string_char_at(str, xx + 1));
     }
 }
-file_text_close(file);
 
+// start
+file_text_readln(file);
+StartX = file_text_read_real(file);
+file_text_readln(file);
+StartY = file_text_read_real(file);
+file_text_readln(file);
+
+// finish
+file_text_readln(file);
+FinishX = file_text_read_real(file);
+file_text_readln(file);
+FinishY = file_text_read_real(file);
+file_text_readln(file);
+
+// items
+ItemsCount = 0;
+file_text_readln(file);
+while (true) {
+    str = file_text_read_string(file);
+    file_text_readln(file);
+    if (str == '[Outputs]') {
+        break;
+    } else {
+        args = split(str, ' ');
+        var iid = real(args[0]);
+        if (iid == ItemsCount) {
+            var itemType = undefined;
+            switch (args[1]) {
+                case 'L':
+                    itemType = oLaserGenerator;
+                    break;
+                case 'M':
+                    itemType = oElectroBlock;
+                    break;
+                case 'K':
+                    itemType = oButton;
+                    break;
+                case 'C':
+                    itemType = oComp;
+                    break;
+            }
+            var xx = real(args[2]);
+            var yy = real(args[3]);
+            var dir = real(args[4]);
+            Items[iid] = instance_create(xx, yy, itemType);
+            Items[iid].Dir = dir;
+            Items[iid].IID = real(iid);
+            ItemsCount++;
+            if (itemType == oLaserGenerator) {
+                var x1 = xx;
+                var y1 = yy;
+                do {
+                    var laser = instance_create(x1, y1, oLaser);
+                    laser.Dir = dir;
+                    Items[iid].Lasers[Items[iid].LasersCount] = laser;
+                    Items[iid].LasersCount++;
+                    x1 -= Dx(dir);
+                    y1 -= Dy(dir);
+                } until (oMap.Map[#x1,y1] == 1);
+            }
+        }
+    }
+}
+
+// nets
+while (file_text_eof(file) == false) {
+    str = file_text_read_string(file);
+    file_text_readln(file);
+    args = split(str, ' ');
+    var argsLength = array_length_1d(args);
+    var itemFrom = Items[args[0]];
+    for (var i = 1; i < argsLength; i++) {
+        var itemTo = Items[args[i]];
+        itemFrom.Outputs[itemFrom.OutputsCount] = itemTo;
+        itemFrom.OutputsCount++;
+        itemTo.Inputs[itemTo.InputsCount]  = itemFrom;
+        itemTo.InputsCount++;
+    }
+}
+
+file_text_close(file);
 

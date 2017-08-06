@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="1" name="datafiles">
+  <datafiles number="2" name="datafiles">
     <datafile>
       <name>TestLab01.grlmap</name>
       <exists>-1</exists>
@@ -21,6 +21,23 @@
       </ConfigOptions>
       <filename>TestLab01.grlmap</filename>
     </datafile>
+    <datafile>
+      <name>DemoLab.grlmap</name>
+      <exists>-1</exists>
+      <size>384</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>DemoLab.grlmap</filename>
+    </datafile>
   </datafiles>
   <NewExtensions/>
   <sounds name="sound"/>
@@ -30,6 +47,14 @@
     <sprite>sprites\sTestLab</sprite>
     <sprite>sprites\sExitDoors</sprite>
     <sprite>sprites\sStartDoors</sprite>
+    <sprite>sprites\sLaserGenerator</sprite>
+    <sprite>sprites\sLaser</sprite>
+    <sprite>sprites\sElectroBlock</sprite>
+    <sprite>sprites\sComp</sprite>
+    <sprite>sprites\sButton</sprite>
+    <sprite>sprites\sLock</sprite>
+    <sprite>sprites\sLaserBlockGenerator</sprite>
+    <sprite>sprites\sLaserBlock</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -45,13 +70,24 @@
     <script>scripts\find_longest_way.gml</script>
     <script>scripts\draw_back.gml</script>
     <script>scripts\delete_surface.gml</script>
+    <script>scripts\split.gml</script>
+    <script>scripts\activate_item.gml</script>
   </scripts>
   <objects name="objects">
-    <object>objects\oMap</object>
-    <object>objects\oPlayer</object>
+    <object>objects\aItem</object>
+    <objects name="Items">
+      <object>objects\oButton</object>
+      <object>objects\oComp</object>
+      <object>objects\oElectroBlock</object>
+      <object>objects\oLaser</object>
+      <object>objects\oLaserGenerator</object>
+      <object>objects\oLock</object>
+    </objects>
     <object>objects\oDoor</object>
-    <object>objects\oMapPresenter</object>
     <object>objects\oInit</object>
+    <object>objects\oMap</object>
+    <object>objects\oMapPresenter</object>
+    <object>objects\oPlayer</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_init</room>

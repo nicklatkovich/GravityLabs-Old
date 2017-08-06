@@ -76,3 +76,7 @@ for (var i = 0; i < w; i++) {
     }
 }
 
+var xyf = find_longest_way(Map, StartX + StartY * w);
+FinishX = xyf mod w;
+FinishY = xyf div w;
+

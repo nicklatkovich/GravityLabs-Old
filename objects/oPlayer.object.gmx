@@ -79,6 +79,14 @@ if (LevelIsDone) {
     }
 } else if (LevelIsStart) {
     if (CanChangeGrav) {
+        if (keyboard_check_pressed(vk_space)) {
+            for (var i = 0; i &lt; oMap.ItemsCount; i++) {
+                var item = oMap.Items[i];
+                if (item.xx == xx &amp;&amp; item.yy == yy) {
+                    activate_item(item);
+                }
+            }
+        }
         var newDir = -1;
         if (keyboard_check_pressed(vk_left)) {
             newDir = 2;
@@ -151,7 +159,7 @@ if (LevelIsDone) {
         }
     }
     
-    if (keyboard_check_pressed(vk_space)) {
+    if (keyboard_check_pressed(ord('R'))) {
         instance_destroy( );
         oPlayerInit(Map, Map.StartX, Map.StartY);
     }
