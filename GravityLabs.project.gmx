@@ -55,23 +55,26 @@
     <sprite>sprites\sLock</sprite>
     <sprite>sprites\sLaserBlockGenerator</sprite>
     <sprite>sprites\sLaserBlock</sprite>
+    <sprite>sprites\sWay</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\load_map_from_file.gml</script>
+    <script>scripts\activate_item.gml</script>
+    <script>scripts\delete_surface.gml</script>
+    <script>scripts\draw_back.gml</script>
     <script>scripts\draw_map.gml</script>
-    <script>scripts\get_shuffle.gml</script>
-    <script>scripts\rand.gml</script>
-    <script>scripts\oPlayerInit.gml</script>
     <script>scripts\Dx.gml</script>
     <script>scripts\Dy.gml</script>
-    <script>scripts\generate_map.gml</script>
     <script>scripts\find_longest_way.gml</script>
-    <script>scripts\draw_back.gml</script>
-    <script>scripts\delete_surface.gml</script>
+    <script>scripts\generate_map.gml</script>
+    <script>scripts\get_puts_coords.gml</script>
+    <script>scripts\get_shuffle.gml</script>
+    <script>scripts\load_map_from_file.gml</script>
+    <script>scripts\oPlayerInit.gml</script>
+    <script>scripts\rand.gml</script>
     <script>scripts\split.gml</script>
-    <script>scripts\activate_item.gml</script>
+    <script>scripts\short_way.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\aItem</object>

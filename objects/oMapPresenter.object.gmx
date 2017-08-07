@@ -55,7 +55,8 @@ Str += string(oMap.MapSeed);
             <kind>1</kind>
             <string>
 draw_surface(oMap.MapSurf, 0, 0);
-draw_text(0, 0, Str);
+draw_surface(oMap.SurfWays, 0, 0);
+//draw_text(0, 0, Str);
 
 </string>
           </argument>

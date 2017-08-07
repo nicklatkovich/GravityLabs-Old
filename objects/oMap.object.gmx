@@ -41,6 +41,7 @@ MapSurf = surface_create(1, 1);
 CellSize = min(
     room_width / w,
     room_height / h);
+Scale = CellSize / 64;
 draw_map(MapSurf, Map, CellSize);
 SurfBack = surface_create(w * CellSize, h * CellSize);
 draw_back(SurfBack, CellSize);
@@ -88,6 +89,95 @@ for (var i = 0; i &lt; ItemsCount; i++) {
     }
 }
 
+Ways = ds_grid_create(w * 8, h * 8);
+ds_grid_clear(Ways, 0);
+
+for (var i = 0; i &lt; ItemsCount; i++) {
+    var item = Items[i];
+    var region = get_puts_coords(item);
+    if (is_undefined(region) == false) {
+        ds_grid_set_region(Ways, region[0] - 1, region[1] - 1, region[2] + 1, region[3] + 1, 1);
+        ds_grid_set_region(Ways, region[0], region[1], region[2], region[3], 2);
+    }
+}
+
+var w8 = w * 8;
+var h8 = h * 8;
+
+for (var i = 0; i &lt; ItemsCount; i++) {
+    var item = Items[i];
+    for (var j = 0; j &lt; item.OutputsCount; j++) {
+        var itemTo = item.Outputs[j];
+        var region1 = get_puts_coords(item);
+        var region2 = get_puts_coords(itemTo);
+        for (var xx = region1[0]; xx &lt;= region1[2]; xx++) {
+            for (var yy = region1[1]; yy &lt;= region1[3]; yy++) {
+                if (Ways[#xx,yy] == 2) {
+                    Ways[#xx,yy] = 4;
+                }
+            }
+        }
+        for (var xx = region2[0]; xx &lt;= region2[2]; xx++) {
+            for (var yy = region2[1]; yy &lt;= region2[3]; yy++) {
+                if (Ways[#xx,yy] == 2) {
+                    Ways[#xx,yy] = 5;
+                }
+            }
+        }
+        var shortWay = short_way(Ways, region1[0], region1[1], region2[0], region2[1]);
+        var out = false;
+        for (var k = 1; k &lt;= shortWay[0]; k++) {
+            var xx = shortWay[k] mod w8;
+            var yy = shortWay[k] div w8;
+            for (var dx = -1; dx &lt;= 1; dx++) {
+                for (var dy = -1; dy &lt;= 1; dy++) {
+                    var x1 = xx + dx;
+                    var y1 = yy + dy;
+                    if (Ways[#x1,y1] == 0) {
+                        Ways[#x1,y1] = 1;
+                    }
+                }
+            }
+            Ways[#xx,yy] = 3;
+        }
+        for (var xx = region1[0]; xx &lt;= region1[2]; xx++) {
+            for (var yy = region1[1]; yy &lt;= region1[3]; yy++) {
+                if (Ways[#xx,yy] == 4) {
+                    Ways[#xx,yy] = 2;
+                }
+            }
+        }
+        for (var xx = region2[0]; xx &lt;= region2[2]; xx++) {
+            for (var yy = region2[1]; yy &lt;= region2[3]; yy++) {
+                if (Ways[#xx,yy] == 5) {
+                    Ways[#xx,yy] = 2;
+                }
+            }
+        }
+    }
+}
+
+SurfWays = surface_create(w * CellSize, h * CellSize);
+surface_set_target(SurfWays);
+for (var xx = 0; xx &lt; w8; xx++) {
+    for (var yy = 0; yy &lt; h8; yy++) {
+        switch (Ways[#xx,yy]) {
+/*
+            case 1:
+                draw_sprite_ext(sWay, 0, xx * 8, yy * 8, Scale, Scale, 0, c_white, 1);
+                break;
+            case 2:
+                draw_sprite_ext(sWay, 0, xx * 8, yy * 8, Scale, Scale, 0, c_purple, 1);
+                break;
+                */
+            case 3:
+                draw_sprite_ext(sWay, 0, xx * 8, yy * 8, Scale, Scale, 0, c_red, 1);
+                break;
+        }
+    }
+}
+surface_reset_target( );
+
 </string>
           </argument>
         </arguments>
@@ -112,8 +202,10 @@ for (var i = 0; i &lt; ItemsCount; i++) {
             <kind>1</kind>
             <string>
 ds_grid_destroy(Map);
+ds_grid_destroy(Ways);
 delete_surface(MapSurf);
 delete_surface(SurfBack);
+delete_surface(SurfWays);
 
 </string>
           </argument>
