@@ -3,7 +3,7 @@
   <spriteName>sLock</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-150</depth>
+  <depth>-300</depth>
   <persistent>0</persistent>
   <parentName>aItem</parentName>
   <maskName>&lt;undefined&gt;</maskName>

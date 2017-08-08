@@ -27,6 +27,12 @@ switch (item.object_index) {
         }
         break;
     case oComp:
+        xf = xx8 + 2;
+        yf = yy8 + 2;
+        xt = xx8 + 5;
+        yt = yy8 + 5;
+        drawWay = true;
+        break;
     case oElectroBlock:
         xf = xx8 + 3;
         yf = yy8 + 3;

@@ -72,7 +72,7 @@ for (var i = 0; i &lt; ItemsCount; i++) {
             case 1:
                 lockX = item.xx + 0.5;
                 lockY = item.yy - 0.5;
-                lockDx = -0.5;
+                lockDx = -0.25;
                 lockDy = 0;
                 break;
             case 2:
@@ -80,7 +80,7 @@ for (var i = 0; i &lt; ItemsCount; i++) {
             case 3:
                 break;
         }
-        for (var i = 0; i &lt; item.InputsCount; i++) {
+        for (var j = 0; j &lt; item.InputsCount; j++) {
             item.Locks[item.LocksCount] = instance_create(lockX, lockY, oLock);
             lockX += lockDx;
             lockY += lockDy;
@@ -97,6 +97,12 @@ for (var i = 0; i &lt; ItemsCount; i++) {
     var region = get_puts_coords(item);
     if (is_undefined(region) == false) {
         ds_grid_set_region(Ways, region[0] - 1, region[1] - 1, region[2] + 1, region[3] + 1, 1);
+        if (item.object_index == oLaserGenerator || item.object_index == oButton) {
+            var dir = item.Dir + 1;
+            var dx = abs(Dx(dir));
+            var dy = abs(Dy(dir));
+            ds_grid_set_region(Ways, region[0] - dx, region[1] - dy, region[2] + dx, region[3] + dy, 6);
+        }
         ds_grid_set_region(Ways, region[0], region[1], region[2], region[3], 2);
     }
 }
@@ -107,6 +113,8 @@ var h8 = h * 8;
 for (var i = 0; i &lt; ItemsCount; i++) {
     var item = Items[i];
     for (var j = 0; j &lt; item.OutputsCount; j++) {
+        var wayLampColor = make_colour_hsv(irandom(255), 255, 255);
+        //var wayLampColor = c_aqua;
         var itemTo = item.Outputs[j];
         var region1 = get_puts_coords(item);
         var region2 = get_puts_coords(itemTo);
@@ -126,19 +134,45 @@ for (var i = 0; i &lt; ItemsCount; i++) {
         }
         var shortWay = short_way(Ways, region1[0], region1[1], region2[0], region2[1]);
         var out = false;
+        var xn = shortWay[1] mod w8;
+        var yn = shortWay[1] div w8;
         for (var k = 1; k &lt;= shortWay[0]; k++) {
-            var xx = shortWay[k] mod w8;
-            var yy = shortWay[k] div w8;
-            for (var dx = -1; dx &lt;= 1; dx++) {
-                for (var dy = -1; dy &lt;= 1; dy++) {
-                    var x1 = xx + dx;
-                    var y1 = yy + dy;
-                    if (Ways[#x1,y1] == 0) {
-                        Ways[#x1,y1] = 1;
+            var xx = xn;
+            var yy = yn;
+            if (k &lt; shortWay[0]) {
+                xn = shortWay[k] mod w8;
+                yn = shortWay[k] div w8;
+            }
+            if (out == false &amp;&amp; Ways[#xn,yn] != 5) {
+                out = true;
+            }
+            if (out) {
+                for (var dx = -1; dx &lt;= 1; dx++) {
+                    for (var dy = -1; dy &lt;= 1; dy++) {
+                        var x1 = xx + dx;
+                        var y1 = yy + dy;
+                        if (Ways[#x1,y1] == 0) {
+                            Ways[#x1,y1] = 1;
+                        }
                     }
                 }
+                var needBreak = false;
+                if (Ways[#xx,yy] == 4) {
+                    needBreak = true;
+                }
+                Ways[#xx,yy] = 3;
+                var wayLamp = instance_create(xx / 8 - 0.5, yy / 8 - 0.5, oWayLamp);
+                wayLamp.Color = wayLampColor;
+                wayLamp.visible = false;
+                wayLamp.Item = item;
+                wayLamp.OutputNumber = j;
+                if (Map[#xx div 8,yy div 8] == 1) {
+                    wayLamp.depth = -200;
+                }
+                if (needBreak) {
+                    break;
+                }
             }
-            Ways[#xx,yy] = 3;
         }
         for (var xx = region1[0]; xx &lt;= region1[2]; xx++) {
             for (var yy = region1[1]; yy &lt;= region1[3]; yy++) {
@@ -158,21 +192,25 @@ for (var i = 0; i &lt; ItemsCount; i++) {
 }
 
 SurfWays = surface_create(w * CellSize, h * CellSize);
+SurfWaysBack = surface_create(w * CellSize, h * CellSize);
 surface_set_target(SurfWays);
 for (var xx = 0; xx &lt; w8; xx++) {
     for (var yy = 0; yy &lt; h8; yy++) {
-        switch (Ways[#xx,yy]) {
-/*
-            case 1:
+        if (Map[#xx div 8,yy div 8] == 1) {
+            if (Ways[#xx,yy] == 3) {
                 draw_sprite_ext(sWay, 0, xx * 8, yy * 8, Scale, Scale, 0, c_white, 1);
-                break;
-            case 2:
-                draw_sprite_ext(sWay, 0, xx * 8, yy * 8, Scale, Scale, 0, c_purple, 1);
-                break;
-                */
-            case 3:
-                draw_sprite_ext(sWay, 0, xx * 8, yy * 8, Scale, Scale, 0, c_red, 1);
-                break;
+            }
+        }
+    }
+}
+surface_reset_target( );
+surface_set_target(SurfWaysBack);
+for (var xx = 0; xx &lt; w8; xx++) {
+    for (var yy = 0; yy &lt; h8; yy++) {
+        if (Map[#xx div 8,yy div 8] == 0) {
+            if (Ways[#xx,yy] == 3) {
+                draw_sprite_ext(sWay, 1, xx * 8, yy * 8, Scale, Scale, 0, c_white, 1);
+            }
         }
     }
 }
@@ -231,6 +269,7 @@ delete_surface(SurfWays);
             <kind>1</kind>
             <string>
 draw_surface(SurfBack, 0, 0);
+draw_surface(SurfWaysBack, 0, 0);
 
 </string>
           </argument>

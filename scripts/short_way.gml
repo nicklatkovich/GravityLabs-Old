@@ -48,13 +48,15 @@ while (temp[#xt,yt] == -1) {
                 case 5:
                     l += 0.0001;
                     break;
+                case 6:
+                    l += 1000000
+                    break;
             }
-            if (grid[#x1,y1] != 4 && grid[#x1,y1] != 5) {
+            if (grid[#xx,yy] != 4 && grid[#x1,y1] != 5) {
                 if ((d + 2) mod 4 != dprev) {
                     l++;
                 }
             }
-
             if (temp[#x1,y1] == -1 || temp[#x1,y1] > l) {
                 temp[#x1,y1] = l;
                 dirs[#x1,y1] = (d + 2) mod 4;
