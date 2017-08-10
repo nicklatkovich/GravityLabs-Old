@@ -73,7 +73,8 @@ while (true) {
             Items[iid].Dir = dir;
             Items[iid].IID = real(iid);
             ItemsCount++;
-            if (itemType == oLaserGenerator) {
+            switch (itemType) {
+            case oLaserGenerator:
                 var x1 = xx;
                 var y1 = yy;
                 do {
@@ -85,6 +86,10 @@ while (true) {
                     x1 -= Dx(dir);
                     y1 -= Dy(dir);
                 } until (oMap.Map[#x1,y1] == 1);
+                break;
+            case oElectroBlock:
+                ds_grid[#xx,yy] = 2;
+                break;
             }
         }
     }
