@@ -43,6 +43,12 @@
 image_angle = 0;
 image_index = 0;
 
+if (Lock == InputsCount) {
+    oMap.Map[#xx,yy] = 0;
+} else {
+    oMap.Map[#xx,yy] = 2;
+}
+
 </string>
           </argument>
         </arguments>
