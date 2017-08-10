@@ -76,6 +76,7 @@
     <script>scripts\rand.gml</script>
     <script>scripts\split.gml</script>
     <script>scripts\short_way.gml</script>
+    <script>scripts\restart_game.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\aItem</object>

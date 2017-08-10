@@ -81,6 +81,7 @@ while (true) {
                     laser.Dir = dir;
                     Items[iid].Lasers[Items[iid].LasersCount] = laser;
                     Items[iid].LasersCount++;
+                    ds_grid[#x1,y1] = 2;
                     x1 -= Dx(dir);
                     y1 -= Dy(dir);
                 } until (oMap.Map[#x1,y1] == 1);

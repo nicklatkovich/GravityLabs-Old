@@ -35,6 +35,9 @@ LevelIsDone = false;
 LevelIsStart = false;
 Alpha = 0;
 
+IsDead = false;
+DeadTimeout = undefined;
+
 </string>
           </argument>
         </arguments>
@@ -69,12 +72,7 @@ if (LevelIsDone) {
         if (oMap.Exit.OpenProcess &gt; 0) {
             oMap.Exit.OpenProcess -= 0.02;
         } else {
-            with (all) {
-                instance_destroy( );
-            }
-            global.MapWidth += 2;
-            global.MapHeight++;
-            instance_create(0, 0, oMap);
+            restart_game( );
         }
     }
 } else if (LevelIsStart) {
@@ -108,7 +106,11 @@ if (LevelIsDone) {
                 xt += Dx(newDir);
                 yt += Dy(newDir);
                 steps++;
-            } until (Map.Map[#xt,yt] != 0);
+                if (IsDead == false &amp;&amp; Map.Map[#xt,yt] == 2) {
+                    IsDead = true;
+                    DeadTimeout = steps / Speed;
+                }
+            } until (Map.Map[#xt,yt] == 1);
             steps--;
             if (xp != xx || yp != yy) {
                 DirGrav = newDir;
@@ -122,6 +124,18 @@ if (LevelIsDone) {
             }
         }
     } else {
+        if (IsDead) {
+            if (DeadTimeout &lt;= 0) {
+                if (Alpha &lt;= 0) {
+                    restart_game( );
+                    exit;
+                } else {
+                    Alpha -= 0.1;
+                }
+            } else {
+                DeadTimeout--;
+            }
+        }
         x += Dx(DirGrav) * Speed * Map.CellSize;
         y += Dy(DirGrav) * Speed * Map.CellSize;
         Angle += AngleSpeed;
@@ -160,8 +174,8 @@ if (LevelIsDone) {
     }
     
     if (keyboard_check_pressed(ord('R'))) {
-        instance_destroy( );
-        oPlayerInit(Map, Map.StartX, Map.StartY);
+        restart_game( );
+        exit;
     }
 } else {
     if (Alpha &lt; 1) {
