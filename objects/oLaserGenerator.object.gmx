@@ -87,11 +87,13 @@ PrevLock = Lock;
         image_index = 1;
         for (var i = 0; i &lt; LasersCount; i++) {
             Lasers[i].visible = false;
+            oMap.Map[#Lasers[i].xx,Lasers[i].yy] = 0;
         }
     } else {
         image_index = 0;
         for (var i = 0; i &lt; LasersCount; i++) {
             Lasers[i].visible = true;
+            oMap.Map[#Lasers[i].xx,Lasers[i].yy] = 2;
         }
     }
 //}
