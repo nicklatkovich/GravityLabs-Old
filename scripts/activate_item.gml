@@ -25,18 +25,20 @@ switch (type) {
     case oComp:
         if (item.Lock == item.InputsCount) {
             if (item.State > 0) {
-                item.Outputs[item.State - 1].Lock--;
+                item.Outputs[item.ShuffledOutputs[item.State - 1]].Lock--;
                 with (oWayLamp) {
-                    if (Item == item && OutputNumber == item.State - 1) {
+                    if (Item == item && OutputNumber == item.ShuffledOutputs[item.State - 1]) {
                         visible = false;
                     }
                 }
+            } else {
+                item.ShuffledOutputs = get_shuffle(item.OutputsCount);
             }
             item.State = (item.State + 1) mod (item.OutputsCount + 1);
             if (item.State > 0) {
-                item.Outputs[item.State - 1].Lock++;
+                item.Outputs[item.ShuffledOutputs[item.State - 1]].Lock++;
                 with (oWayLamp) {
-                    if (Item == item && OutputNumber == item.State - 1) {
+                    if (Item == item && OutputNumber == item.ShuffledOutputs[item.State - 1]) {
                         visible = true;
                     }
                 }
