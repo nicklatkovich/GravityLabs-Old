@@ -26,15 +26,16 @@
           <argument>
             <kind>1</kind>
             <string>
+ItemsCount = 0;
+
 randomize( );
 MapSeed = rand(1024);
 
-MomsNumber = 0;
 Map = ds_grid_create(16, 8);
 //Map = ds_grid_create(global.MapWidth, global.MapHeight);
 
-load_map_from_file(Map, 'DemoLab.grlmap');
-//generate_map(Map, MapSeed);
+//load_map_from_file(Map, 'DemoLab.grlmap');
+generate_map(Map, MapSeed);
 var w = ds_grid_width(Map);
 var h = ds_grid_height(Map);
 MapSurf = surface_create(1, 1);

@@ -40,7 +40,6 @@ FinishY = file_text_read_real(file);
 file_text_readln(file);
 
 // items
-ItemsCount = 0;
 file_text_readln(file);
 while (true) {
     str = file_text_read_string(file);
