@@ -76,7 +76,17 @@ for (var i = 0; i < w; i++) {
     }
 }
 
-var xyf = find_longest_way(Map, StartX + StartY * w);
+var xyf, xf, yf;
+xyf = find_longest_way(Map, StartX + StartY * w);
+xf = xyf mod w;
+yf = xyf div w;
+Items[0] = instance_create(xf, yf, oButton);
+xyf = find_longest_way(Map, xf + yf * w);
 FinishX = xyf mod w;
 FinishY = xyf div w;
+Exit = instance_create(FinishX, FinishY, oDoor);
+Items[1] = Exit;
+Items[1].SpriteDoors = sExitDoors;
+add_net(0, 1);
+ItemsCount = 2;
 

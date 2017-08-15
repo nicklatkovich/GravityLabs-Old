@@ -5,6 +5,7 @@ var item = argument0;
 var type = item.object_index;
 
 switch (type) {
+    case oKey:
     case oButton:
         var dState;
         if (item.State == 0) {
@@ -19,6 +20,15 @@ switch (type) {
         with (oWayLamp) {
             if (Item == item) {
                 visible = !visible;
+            }
+        }
+        break;
+    case oCube:
+        item.State = 1;
+        GrabbedCube = item;
+        with (oButton) {
+            if (xx == item.xx && yy == item.yy) {
+                LeavedCube = noone;
             }
         }
         break;

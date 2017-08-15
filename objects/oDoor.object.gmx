@@ -5,10 +5,24 @@
   <visible>-1</visible>
   <depth>-50</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>aItem</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>604</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_inherited</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -26,9 +40,9 @@
           <argument>
             <kind>1</kind>
             <string>
-Angle = 0;
-
 OpenProcess = 0;
+
+SpriteDoors = sStartDoors;
 
 </string>
           </argument>
@@ -53,11 +67,10 @@ OpenProcess = 0;
           <argument>
             <kind>1</kind>
             <string>
-var scale = oMap.CellSize / 80;
 var doorsOffset = OpenProcess * oMap.CellSize / 2;
-draw_sprite_ext(SpriteDoors, 2, x, y, scale, scale, Angle, c_white, 1);
-draw_sprite_ext(SpriteDoors, 0, x + lengthdir_x(doorsOffset, Angle + 180), y + lengthdir_y(doorsOffset, Angle + 180), scale, scale, Angle, c_white, 1);
-draw_sprite_ext(SpriteDoors, 1, x + lengthdir_x(doorsOffset, Angle), y + lengthdir_y(doorsOffset, Angle), scale, scale, Angle, c_white, 1);
+draw_sprite_ext(SpriteDoors, 2, x, y, image_xscale, image_yscale, image_angle, c_white, 1);
+draw_sprite_ext(SpriteDoors, 0, x + lengthdir_x(doorsOffset, image_angle + 180), y + lengthdir_y(doorsOffset, image_angle + 180), image_xscale, image_yscale, image_angle, c_white, 1);
+draw_sprite_ext(SpriteDoors, 1, x + lengthdir_x(doorsOffset, image_angle), y + lengthdir_y(doorsOffset, image_angle), image_xscale, image_yscale, image_angle, c_white, 1);
 
 </string>
           </argument>

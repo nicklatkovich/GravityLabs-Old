@@ -26,14 +26,15 @@
           <argument>
             <kind>1</kind>
             <string>
+ItemsCount = 0;
+
 randomize( );
 MapSeed = rand(1024);
 
-MomsNumber = 0;
 Map = ds_grid_create(16, 8);
 //Map = ds_grid_create(global.MapWidth, global.MapHeight);
 
-load_map_from_file(Map, 'DemoLab.grlmap');
+load_map_from_file(Map, 'Chamber030001.grlmap');
 //generate_map(Map, MapSeed);
 var w = ds_grid_width(Map);
 var h = ds_grid_height(Map);
@@ -48,6 +49,7 @@ draw_back(SurfBack, CellSize);
 
 oPlayerInit(id, StartX, StartY);
 
+/*
 Exit = instance_create((FinishX + 0.5) * CellSize, (FinishY + 0.5) * CellSize, oDoor);
 for (var d = rand(4); d &lt; 7; d++) {
     if (Map[#FinishX + Dx(d),FinishY + Dy(d)] == 1) {
@@ -56,8 +58,9 @@ for (var d = rand(4); d &lt; 7; d++) {
     }
 }
 Exit.SpriteDoors = sExitDoors;
+*/
 
-StartDoors = instance_create((StartX + 0.5) * CellSize, (StartY + 0.5) * CellSize, oDoor);
+StartDoors = instance_create(StartX, StartY, oDoor);
 StartDoors.SpriteDoors = sStartDoors;
 
 instance_create(0, 0, oMapPresenter);

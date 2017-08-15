@@ -8,7 +8,7 @@ var xf, yf, xt, yt, drawWay = false;;
 var xx8 = item.xx * 8;
 var yy8 = item.yy * 8;
 switch (item.object_index) {
-    case oButton:
+    case oKey:
         switch (item.Dir) {
             case 0:
                 xf = xx8 + 7;
@@ -41,6 +41,7 @@ switch (item.object_index) {
         drawWay = true;
         break;
     case oLaserGenerator:
+    case oButton:
         switch (item.Dir) {
             case 0:
                 xf = xx8 + 7;
@@ -57,6 +58,13 @@ switch (item.object_index) {
                 drawWay = true;
                 break;
         }
+        break;
+    case oDoor:
+        xf = xx8;
+        yf = yy8;
+        xt = xx8 + 7;
+        yt = yy8 + 7;
+        drawWay = true;
         break;
 }
 

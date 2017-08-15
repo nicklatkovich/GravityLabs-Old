@@ -38,9 +38,10 @@ FinishX = file_text_read_real(file);
 file_text_readln(file);
 FinishY = file_text_read_real(file);
 file_text_readln(file);
+Exit = instance_create(FinishX, FinishY, oDoor);
+Exit.SpriteDoors = sExitDoors;
 
 // items
-ItemsCount = 0;
 file_text_readln(file);
 while (true) {
     str = file_text_read_string(file);
@@ -60,10 +61,16 @@ while (true) {
                     itemType = oElectroBlock;
                     break;
                 case 'K':
+                    itemType = oKey;
+                    break;
+                case 'B':
                     itemType = oButton;
                     break;
-                case 'C':
+                case 'S':
                     itemType = oComp;
+                    break;
+                case 'C':
+                    itemType = oCube;
                     break;
             }
             var xx = real(args[2]);
@@ -94,6 +101,8 @@ while (true) {
         }
     }
 }
+Items[ItemsCount] = Exit;
+ItemsCount++;
 
 // nets
 while (file_text_eof(file) == false) {
@@ -103,11 +112,7 @@ while (file_text_eof(file) == false) {
     var argsLength = array_length_1d(args);
     var itemFrom = Items[args[0]];
     for (var i = 1; i < argsLength; i++) {
-        var itemTo = Items[args[i]];
-        itemFrom.Outputs[itemFrom.OutputsCount] = itemTo;
-        itemFrom.OutputsCount++;
-        itemTo.Inputs[itemTo.InputsCount]  = itemFrom;
-        itemTo.InputsCount++;
+        add_net(itemFrom, Items[args[i]]);
     }
 }
 
