@@ -37,6 +37,8 @@ Alpha = 0;
 
 IsDead = false;
 DeadTimeout = undefined;
+GrabbedCube = noone;
+PressedButton = noone;
 
 </string>
           </argument>
@@ -79,11 +81,27 @@ if (LevelIsDone) {
     if (CanChangeGrav) {
         if (IsDead == false) {
             if (keyboard_check_pressed(vk_space)) {
-                for (var i = 0; i &lt; oMap.ItemsCount; i++) {
-                    var item = oMap.Items[i];
-                    if (item.xx == xx &amp;&amp; item.yy == yy) {
-                        activate_item(item);
+                if (GrabbedCube == noone) {
+                    for (var i = 0; i &lt; oMap.ItemsCount; i++) {
+                        var item = oMap.Items[i];
+                        if (item.object_index != oButton &amp;&amp; item.xx == xx &amp;&amp; item.yy == yy) {
+                            activate_item(item);
+                            break;
+                        }
                     }
+                } else {
+                    GrabbedCube.State = 0;
+                    GrabbedCube.Dir = DirGrav;
+                    GrabbedCube.xx = xx;
+                    GrabbedCube.yy = yy;
+                    for (var i = 0; i &lt; oMap.ItemsCount; i++) {
+                        var item = oMap.Items[i];
+                        if (item.object_index == oButton &amp;&amp; item.xx == xx &amp;&amp; item.yy == yy) {
+//                            activate_item(item);
+                            item.LeavedCube = GrabbedCube;
+                        }
+                    }
+                    GrabbedCube = noone;
                 }
             }
             var newDir = -1;
@@ -114,6 +132,12 @@ if (LevelIsDone) {
                 } until (Map.Map[#xt,yt] == 1);
                 steps--;
                 if (xp != xx || yp != yy) {
+                    if (PressedButton != noone) {
+                        if (PressedButton.LeavedCube == noone) {
+                            activate_item(PressedButton);
+                        }
+                        PressedButton = noone;
+                    }
                     DirGrav = newDir;
                     XTo = (xp + 0.5) * Map.CellSize;
                     YTo = (yp + 0.5) * Map.CellSize;
@@ -159,6 +183,15 @@ if (LevelIsDone) {
             Angle = AngleTo;
             if (xx == oMap.FinishX &amp;&amp; yy == oMap.FinishY &amp;&amp; IsDead == false) {
                 LevelIsDone = true;
+            } else {
+                with (oButton) {
+                    if (xx == other.xx &amp;&amp; yy == other.yy) {
+                        other.PressedButton = id;
+                        if (LeavedCube == noone) {
+                            activate_item(id);
+                        }
+                    }
+                }
             }
         }
     }

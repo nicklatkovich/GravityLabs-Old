@@ -7,9 +7,9 @@
   <coltolerance>0</coltolerance>
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
-  <bbox_left>14</bbox_left>
-  <bbox_right>49</bbox_right>
-  <bbox_top>35</bbox_top>
+  <bbox_left>0</bbox_left>
+  <bbox_right>63</bbox_right>
+  <bbox_top>50</bbox_top>
   <bbox_bottom>63</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
@@ -22,5 +22,7 @@
   <frames>
     <frame index="0">images\sButton_0.png</frame>
     <frame index="1">images\sButton_1.png</frame>
+    <frame index="2">images\sButton_2.png</frame>
+    <frame index="3">images\sButton_3.png</frame>
   </frames>
 </sprite>
