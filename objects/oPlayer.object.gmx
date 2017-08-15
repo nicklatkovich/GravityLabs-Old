@@ -40,6 +40,8 @@ DeadTimeout = undefined;
 GrabbedCube = noone;
 PressedButton = noone;
 
+image_speed = 0;
+
 </string>
           </argument>
         </arguments>
