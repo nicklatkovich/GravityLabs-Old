@@ -69,10 +69,16 @@ if (LevelIsDone) {
     if (Alpha &gt; 0) {
         if (oMap.Exit.OpenProcess &gt;= 1) {
             Alpha -= 0.02;
+        } else if (oMap.Exit.InputsCount == 0) {
+            oMap.Exit.OpenProcess += 0.02;
         }
     } else {
         if (oMap.Exit.OpenProcess &gt; 0) {
-            oMap.Exit.OpenProcess -= 0.04;
+            if (oMap.Exit.InputsCount == 0) {
+                oMap.Exit.OpenProcess -= 0.02;
+            } else {
+                oMap.Exit.OpenProcess -= 0.04;
+            }
         } else {
             restart_game( );
         }
