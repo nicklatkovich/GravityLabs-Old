@@ -65,14 +65,12 @@ PressedButton = noone;
             <string>
 if (LevelIsDone) {
     if (Alpha &gt; 0) {
-        if (oMap.Exit.OpenProcess &lt; 1) {
-            oMap.Exit.OpenProcess += 0.02;
-        } else {
+        if (oMap.Exit.OpenProcess &gt;= 1) {
             Alpha -= 0.02;
         }
     } else {
         if (oMap.Exit.OpenProcess &gt; 0) {
-            oMap.Exit.OpenProcess -= 0.02;
+            oMap.Exit.OpenProcess -= 0.04;
         } else {
             restart_game( );
         }
@@ -181,7 +179,8 @@ if (LevelIsDone) {
             x = XTo;
             y = YTo;
             Angle = AngleTo;
-            if (xx == oMap.FinishX &amp;&amp; yy == oMap.FinishY &amp;&amp; IsDead == false) {
+            var _exit = oMap.Exit;
+            if (_exit.Lock == _exit.InputsCount &amp;&amp; xx == oMap.FinishX &amp;&amp; yy == oMap.FinishY &amp;&amp; IsDead == false) {
                 LevelIsDone = true;
             } else {
                 with (oButton) {
