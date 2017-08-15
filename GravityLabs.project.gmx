@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="2" name="datafiles">
+  <datafiles number="3" name="datafiles">
     <datafile>
       <name>TestLab01.grlmap</name>
       <exists>-1</exists>
@@ -38,6 +38,23 @@
       </ConfigOptions>
       <filename>DemoLab.grlmap</filename>
     </datafile>
+    <datafile>
+      <name>Chamber030001.grlmap</name>
+      <exists>-1</exists>
+      <size>235</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>Chamber030001.grlmap</filename>
+    </datafile>
   </datafiles>
   <NewExtensions/>
   <sounds name="sound"/>
@@ -51,12 +68,14 @@
     <sprite>sprites\sLaser</sprite>
     <sprite>sprites\sElectroBlock</sprite>
     <sprite>sprites\sComp</sprite>
-    <sprite>sprites\sButton</sprite>
+    <sprite>sprites\sKey</sprite>
     <sprite>sprites\sLock</sprite>
     <sprite>sprites\sLaserBlockGenerator</sprite>
     <sprite>sprites\sLaserBlock</sprite>
     <sprite>sprites\sWay</sprite>
     <sprite>sprites\sWayLamp</sprite>
+    <sprite>sprites\sCube</sprite>
+    <sprite>sprites\sButton</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -77,18 +96,21 @@
     <script>scripts\split.gml</script>
     <script>scripts\short_way.gml</script>
     <script>scripts\restart_game.gml</script>
+    <script>scripts\add_net.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\aItem</object>
     <objects name="Items">
-      <object>objects\oButton</object>
+      <object>objects\oKey</object>
       <object>objects\oComp</object>
       <object>objects\oElectroBlock</object>
       <object>objects\oLaser</object>
       <object>objects\oLaserGenerator</object>
       <object>objects\oLock</object>
+      <object>objects\oDoor</object>
+      <object>objects\oButton</object>
+      <object>objects\oCube</object>
     </objects>
-    <object>objects\oDoor</object>
     <object>objects\oInit</object>
     <object>objects\oMap</object>
     <object>objects\oMapPresenter</object>
