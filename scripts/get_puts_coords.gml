@@ -13,13 +13,13 @@ switch (item.object_index) {
             case 0:
                 xf = xx8 + 7;
                 yf = yy8 + 3;
-                xt = xx8 + 8;
+                xt = xx8 + 7;
                 yt = yy8 + 4;
                 drawWay = true;
                 break;
             case 1:
                 xf = xx8 + 3;
-                yf = yy8 + -1;
+                yf = yy8 + 0;
                 xt = xx8 + 4;
                 yt = yy8 + 0;
                 drawWay = true;
@@ -28,7 +28,7 @@ switch (item.object_index) {
                 xf = xx8 + 3;
                 yf = yy8 + 7;
                 xt = xx8 + 4;
-                yt = yy8 + 8;
+                yt = yy8 + 7;
                 drawWay = true;
                 break;
         }

@@ -95,25 +95,30 @@ for (var i = 0; i &lt; ItemsCount; i++) {
 Ways = ds_grid_create(w * 8, h * 8);
 ds_grid_clear(Ways, 0);
 
+with (aItem) {
+    if (object_index != oCube) {
+        var region = get_puts_coords(id);
+        if (is_undefined(region) == false) {
+            var _1w;
+            if (object_index == oDoor) {
+                _1w = 3;
+            } else {
+                _1w = 1;
+            }
+            ds_grid_set_region(other.Ways, region[0] - _1w, region[1] - _1w, region[2] + _1w, region[3] + _1w, 1);
+            if (object_index == oLaserGenerator || object_index == oButton || object_index == oKey) {
+                var dir = Dir + 1;
+                var dx = abs(Dx(dir));
+                var dy = abs(Dy(dir));
+                ds_grid_set_region(other.Ways, region[0] - dx, region[1] - dy, region[2] + dx, region[3] + dy, 6);
+            }
+            ds_grid_set_region(other.Ways, region[0], region[1], region[2], region[3], 2);
+        }
+    }
+}
+
 for (var i = 0; i &lt; ItemsCount; i++) {
     var item = Items[i];
-    var region = get_puts_coords(item);
-    if (is_undefined(region) == false) {
-        var _1w;
-        if (item.object_index == oDoor) {
-            _1w = 2;
-        } else {
-            _1w = 1;
-        }
-        ds_grid_set_region(Ways, region[0] - _1w, region[1] - _1w, region[2] + _1w, region[3] + _1w, 1);
-        if (item.object_index == oLaserGenerator || item.object_index == oButton) {
-            var dir = item.Dir + 1;
-            var dx = abs(Dx(dir));
-            var dy = abs(Dy(dir));
-            ds_grid_set_region(Ways, region[0] - dx, region[1] - dy, region[2] + dx, region[3] + dy, 6);
-        }
-        ds_grid_set_region(Ways, region[0], region[1], region[2], region[3], 2);
-    }
 }
 
 var w8 = w * 8;
