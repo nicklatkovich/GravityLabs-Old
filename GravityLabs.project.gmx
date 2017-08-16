@@ -4,23 +4,76 @@
     <Config>Configs\Default</Config>
   </Configs>
   <datafiles number="6" name="datafiles">
-    <datafile>
-      <name>TestLab01.grlmap</name>
-      <exists>-1</exists>
-      <size>542</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>TestLab01.grlmap</filename>
-    </datafile>
+    <datafiles number="6" name="Chambers">
+      <datafile>
+        <name>Chamber020003.grlmap</name>
+        <exists>-1</exists>
+        <size>229</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Chamber020003.grlmap</filename>
+      </datafile>
+      <datafile>
+        <name>Chamber030000.grlmap</name>
+        <exists>-1</exists>
+        <size>235</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Chamber030000.grlmap</filename>
+      </datafile>
+      <datafile>
+        <name>Chamber040001.grlmap</name>
+        <exists>-1</exists>
+        <size>249</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Chamber040001.grlmap</filename>
+      </datafile>
+      <datafile>
+        <name>Chamber040002.grlmap</name>
+        <exists>-1</exists>
+        <size>262</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Chamber040002.grlmap</filename>
+      </datafile>
+    </datafiles>
     <datafile>
       <name>DemoLab.grlmap</name>
       <exists>-1</exists>
@@ -39,9 +92,9 @@
       <filename>DemoLab.grlmap</filename>
     </datafile>
     <datafile>
-      <name>Chamber030001.grlmap</name>
+      <name>TestLab01.grlmap</name>
       <exists>-1</exists>
-      <size>235</size>
+      <size>542</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -53,58 +106,7 @@
           <CopyToMask>9223372036854775807</CopyToMask>
         </Config>
       </ConfigOptions>
-      <filename>Chamber030001.grlmap</filename>
-    </datafile>
-    <datafile>
-      <name>Chamber040001.grlmap</name>
-      <exists>-1</exists>
-      <size>249</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>Chamber040001.grlmap</filename>
-    </datafile>
-    <datafile>
-      <name>Chamber040002.grlmap</name>
-      <exists>-1</exists>
-      <size>262</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>Chamber040002.grlmap</filename>
-    </datafile>
-    <datafile>
-      <name>Chamber020001.grlmap</name>
-      <exists>-1</exists>
-      <size>229</size>
-      <exportAction>2</exportAction>
-      <exportDir></exportDir>
-      <overwrite>0</overwrite>
-      <freeData>-1</freeData>
-      <removeEnd>0</removeEnd>
-      <store>0</store>
-      <ConfigOptions>
-        <Config name="Default">
-          <CopyToMask>9223372036854775807</CopyToMask>
-        </Config>
-      </ConfigOptions>
-      <filename>Chamber020001.grlmap</filename>
+      <filename>TestLab01.grlmap</filename>
     </datafile>
   </datafiles>
   <NewExtensions/>
