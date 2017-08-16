@@ -88,10 +88,9 @@ if (LevelIsDone) {
         if (IsDead == false) {
             if (keyboard_check_pressed(vk_space)) {
                 if (GrabbedCube == noone) {
-                    for (var i = 0; i &lt; oMap.ItemsCount; i++) {
-                        var item = oMap.Items[i];
-                        if (item.object_index != oButton &amp;&amp; item.xx == xx &amp;&amp; item.yy == yy) {
-                            activate_item(item);
+                    with (aItem) {
+                        if (object_index != oButton &amp;&amp; xx == other.xx &amp;&amp; yy == other.yy) {
+                            activate_item(id);
                             break;
                         }
                     }
@@ -100,11 +99,9 @@ if (LevelIsDone) {
                     GrabbedCube.Dir = DirGrav;
                     GrabbedCube.xx = xx;
                     GrabbedCube.yy = yy;
-                    for (var i = 0; i &lt; oMap.ItemsCount; i++) {
-                        var item = oMap.Items[i];
-                        if (item.object_index == oButton &amp;&amp; item.xx == xx &amp;&amp; item.yy == yy) {
-//                            activate_item(item);
-                            item.LeavedCube = GrabbedCube;
+                    with (oButton) {
+                        if (xx == other.xx &amp;&amp; yy == other.yy) {
+                            LeavedCube = other.GrabbedCube;
                         }
                     }
                     GrabbedCube = noone;

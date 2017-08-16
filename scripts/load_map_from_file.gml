@@ -72,6 +72,9 @@ while (true) {
                 case 'C':
                     itemType = oCube;
                     break;
+                case 'G':
+                    itemType = oGiver;
+                    break;
             }
             var xx = real(args[2]);
             var yy = real(args[3]);

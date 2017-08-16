@@ -25,7 +25,7 @@ switch (type) {
         break;
     case oCube:
         item.State = 1;
-        GrabbedCube = item;
+        oPlayer.GrabbedCube = item;
         with (oButton) {
             if (xx == item.xx && yy == item.yy) {
                 LeavedCube = noone;

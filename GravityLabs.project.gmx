@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="3" name="datafiles">
+  <datafiles number="4" name="datafiles">
     <datafile>
       <name>TestLab01.grlmap</name>
       <exists>-1</exists>
@@ -55,6 +55,23 @@
       </ConfigOptions>
       <filename>Chamber030001.grlmap</filename>
     </datafile>
+    <datafile>
+      <name>Chamber040001.grlmap</name>
+      <exists>-1</exists>
+      <size>249</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>Chamber040001.grlmap</filename>
+    </datafile>
   </datafiles>
   <NewExtensions/>
   <sounds name="sound"/>
@@ -76,6 +93,7 @@
     <sprite>sprites\sWayLamp</sprite>
     <sprite>sprites\sCube</sprite>
     <sprite>sprites\sButton</sprite>
+    <sprite>sprites\Giver</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -110,6 +128,7 @@
       <object>objects\oDoor</object>
       <object>objects\oButton</object>
       <object>objects\oCube</object>
+      <object>objects\oGiver</object>
     </objects>
     <object>objects\oInit</object>
     <object>objects\oMap</object>
