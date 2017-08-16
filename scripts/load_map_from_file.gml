@@ -41,6 +41,12 @@ file_text_readln(file);
 Exit = instance_create(FinishX, FinishY, oDoor);
 Exit.SpriteDoors = sExitDoors;
 
+var exitDir = file_text_read_string(file);
+if (exitDir != "[Items]") {
+    Exit.Dir = real(exitDir);
+    file_text_readln(file);
+}
+
 // items
 file_text_readln(file);
 while (true) {

@@ -3,8 +3,8 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="6" name="datafiles">
-    <datafiles number="6" name="Chambers">
+  <datafiles number="7" name="datafiles">
+    <datafiles number="7" name="Chambers">
       <datafile>
         <name>Chamber020003.grlmap</name>
         <exists>-1</exists>
@@ -72,6 +72,23 @@
           </Config>
         </ConfigOptions>
         <filename>Chamber040002.grlmap</filename>
+      </datafile>
+      <datafile>
+        <name>Chamber060004.grlmap</name>
+        <exists>-1</exists>
+        <size>279</size>
+        <exportAction>2</exportAction>
+        <exportDir></exportDir>
+        <overwrite>0</overwrite>
+        <freeData>-1</freeData>
+        <removeEnd>0</removeEnd>
+        <store>0</store>
+        <ConfigOptions>
+          <Config name="Default">
+            <CopyToMask>9223372036854775807</CopyToMask>
+          </Config>
+        </ConfigOptions>
+        <filename>Chamber060004.grlmap</filename>
       </datafile>
     </datafiles>
     <datafile>
