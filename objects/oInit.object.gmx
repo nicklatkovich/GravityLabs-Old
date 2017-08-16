@@ -28,7 +28,8 @@
             <string>
 global.LevelsCount = 0;
 
-add_level("Chambers/Chamber020003.grlmap", "2");
+add_level("Chambers/Chamber020003.grlmap", "2.0");
+add_level("Chambers/Chamber020005.grlmap", "2.1");
 add_level("Chambers/Chamber030000.grlmap", "3");
 add_level("Chambers/Chamber040001.grlmap", "4.0");
 add_level("Chambers/Chamber040002.grlmap", "4.1");

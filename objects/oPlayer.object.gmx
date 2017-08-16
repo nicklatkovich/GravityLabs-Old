@@ -90,7 +90,7 @@ if (LevelIsDone) {
         if (IsDead == false) {
             if (keyboard_check_pressed(vk_space)) {
                 if (GrabbedCube == noone) {
-                    with (aItem) {
+                    with (aActiveItem) {
                         if (object_index != oButton &amp;&amp; xx == other.xx &amp;&amp; yy == other.yy) {
                             activate_item(id);
                             break;
