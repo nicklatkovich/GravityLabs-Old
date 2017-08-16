@@ -56,6 +56,7 @@ Title = undefined;
             <kind>1</kind>
             <string>
 global.LevelId = LevelId;
+global.LevelNumber = LevelNumber;
 room_goto_next( );
 
 </string>

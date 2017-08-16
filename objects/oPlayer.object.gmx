@@ -80,6 +80,7 @@ if (LevelIsDone) {
                 oMap.Exit.OpenProcess -= 0.04;
             }
         } else {
+            global.Progress[global.LevelNumber] = true;
             room_goto_previous( );
             //restart_game( );
         }

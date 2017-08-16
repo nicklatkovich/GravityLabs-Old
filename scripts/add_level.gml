@@ -1,6 +1,6 @@
 /// add_level(levelId, leveTitle)
 
-LevelsIds[LevelsCount] = argument0;
-LevelsTitles[LevelsCount] = argument1;
-LevelsCount++;
+global.LevelsIds[global.LevelsCount] = argument0;
+global.LevelsTitles[global.LevelsCount] = argument1;
+global.LevelsCount++;
 

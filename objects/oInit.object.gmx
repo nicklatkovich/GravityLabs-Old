@@ -2,7 +2,7 @@
 <object>
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -26,10 +26,20 @@
           <argument>
             <kind>1</kind>
             <string>
-global.MapWidth = 8;
-global.MapHeight = 4;
+global.LevelsCount = 0;
 
-instance_create(0, 0, oMap);
+add_level("Chambers/Chamber020003.grlmap", "2");
+add_level("Chambers/Chamber030000.grlmap", "3");
+add_level("Chambers/Chamber040001.grlmap", "4.0");
+add_level("Chambers/Chamber040002.grlmap", "4.1");
+add_level("Chambers/Chamber060004.grlmap", "6");
+
+for (var i = 0; i &lt; global.LevelsCount; i++) {
+    global.Progress[i] = false;
+}
+
+global.LevelNumber = 0;
+room_goto_next( );
 
 </string>
           </argument>

@@ -26,20 +26,18 @@
           <argument>
             <kind>1</kind>
             <string>
-LevelsCount = 0;
-
-add_level("Chambers/Chamber020003.grlmap", "2");
-add_level("Chambers/Chamber030000.grlmap", "3");
-add_level("Chambers/Chamber040001.grlmap", "4.0");
-add_level("Chambers/Chamber040002.grlmap", "4.1");
-add_level("Chambers/Chamber060004.grlmap", "6");
-
 var xx = 64+96;
 var yy = 64;
-for (var i = 0; i &lt; LevelsCount; i++) {
+for (var i = 0; i &lt; global.LevelsCount; i++) {
     var btn = instance_create(xx, yy, oHomeButton);
-    btn.LevelId = LevelsIds[i];
-    btn.Title = LevelsTitles[i];
+    btn.LevelId = global.LevelsIds[i];
+    btn.Title = global.LevelsTitles[i];
+    btn.LevelNumber = i;
+    if (global.Progress[i]) {
+        btn.image_index = 5;
+    } else {
+        btn.image_index = 4;
+    }
     xx += 96;
     if (xx &gt; 1024-96) {
         xx = 64;
