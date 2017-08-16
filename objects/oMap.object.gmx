@@ -99,7 +99,13 @@ for (var i = 0; i &lt; ItemsCount; i++) {
     var item = Items[i];
     var region = get_puts_coords(item);
     if (is_undefined(region) == false) {
-        ds_grid_set_region(Ways, region[0] - 1, region[1] - 1, region[2] + 1, region[3] + 1, 1);
+        var _1w;
+        if (item.object_index == oDoor) {
+            _1w = 2;
+        } else {
+            _1w = 1;
+        }
+        ds_grid_set_region(Ways, region[0] - _1w, region[1] - _1w, region[2] + _1w, region[3] + _1w, 1);
         if (item.object_index == oLaserGenerator || item.object_index == oButton) {
             var dir = item.Dir + 1;
             var dx = abs(Dx(dir));

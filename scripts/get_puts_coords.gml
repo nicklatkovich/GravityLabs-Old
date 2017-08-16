@@ -81,6 +81,11 @@ switch (item.object_index) {
         }
         break;
     case oDoor:
+        xf = xx8;
+        yf = yy8;
+        xt = xx8 + 7;
+        yt = yy8 + 7;
+        drawWay = true;
     case oGiver:
         xf = xx8;
         yf = yy8;
