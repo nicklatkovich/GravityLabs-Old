@@ -34,7 +34,8 @@ MapSeed = rand(1024);
 Map = ds_grid_create(16, 8);
 //Map = ds_grid_create(global.MapWidth, global.MapHeight);
 
-load_map_from_file(Map, 'Chambers/Chamber060004.grlmap');
+//load_map_from_file(Map, 'Chambers/Chamber060004.grlmap');
+load_map_from_file(Map, global.LevelId);
 //generate_map(Map, MapSeed);
 var w = ds_grid_width(Map);
 var h = ds_grid_height(Map);

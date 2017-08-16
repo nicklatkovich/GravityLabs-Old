@@ -80,7 +80,8 @@ if (LevelIsDone) {
                 oMap.Exit.OpenProcess -= 0.04;
             }
         } else {
-            restart_game( );
+            room_goto_previous( );
+            //restart_game( );
         }
     }
 } else if (LevelIsStart) {
