@@ -30,7 +30,8 @@ global.LevelsCount = 0;
 
 add_level("Chambers/Chamber020003.grlmap", "2.0");
 add_level("Chambers/Chamber020005.grlmap", "2.1");
-add_level("Chambers/Chamber030000.grlmap", "3");
+add_level("Chambers/Chamber030000.grlmap", "3.0");
+add_level("Chambers/Chamber030006.grlmap", "3.1");
 add_level("Chambers/Chamber040001.grlmap", "4.0");
 add_level("Chambers/Chamber040002.grlmap", "4.1");
 add_level("Chambers/Chamber060004.grlmap", "6");
